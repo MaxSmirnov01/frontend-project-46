@@ -4,3 +4,6 @@
 
 **1. Difference between 2 flat JSON:**
 [![asciicast](https://asciinema.org/a/Sjt3qkadVh6msg8TKxUq8xhl6.svg)](https://asciinema.org/a/Sjt3qkadVh6msg8TKxUq8xhl6)
+
+**2. Difference between 2 nested JSON or YAML files in a stylish format:**
+[![asciicast](https://asciinema.org/a/XwvWra0SdEC7aVqAOTJ6cJcrl.svg)](https://asciinema.org/a/XwvWra0SdEC7aVqAOTJ6cJcrl)
