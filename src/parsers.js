@@ -9,7 +9,7 @@ const parse = (data, format) => {
     case '.yaml':
       return yaml.load(data);
     default:
-      throw new Error(`undefined ${format}`);
+      throw new Error(`${format} is undefined`);
   }
 };
 

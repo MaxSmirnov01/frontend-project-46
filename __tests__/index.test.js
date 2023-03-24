@@ -22,3 +22,10 @@ test('genDiff yaml/yml', () => {
   const result = readFile('expectedStylishFile.txt');
   expect(genDiff(filepath1, filepath2)).toEqual(result);
 });
+
+test('genDiff json/yml', () => {
+  const filepath1 = getFixturePath('file1.json');
+  const filepath2 = getFixturePath('file2.yml');
+  const result = readFile('expectedStylishFile.txt');
+  expect(genDiff(filepath1, filepath2)).toEqual(result);
+});
