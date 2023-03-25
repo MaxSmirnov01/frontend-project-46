@@ -1,7 +1,7 @@
 import yaml from 'js-yaml';
 
-const parse = (data, format) => {
-  switch (format) {
+const parse = (data, extension) => {
+  switch (extension) {
     case '.json':
       return JSON.parse(data);
     case '.yml':
@@ -9,7 +9,7 @@ const parse = (data, format) => {
     case '.yaml':
       return yaml.load(data);
     default:
-      throw new Error(`${format} is undefined`);
+      throw new Error(`${extension} is undefined`);
   }
 };
 

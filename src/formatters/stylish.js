@@ -43,8 +43,10 @@ const stylish = (diffTree) => {
           throw new Error(`${item.type} is undefined`);
       }
     });
+
     return `{\n${result.join('\n')}\n${bracketIndent}}`;
   };
+
   return iter(diffTree, 1);
 };
 
