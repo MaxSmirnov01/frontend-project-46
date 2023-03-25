@@ -43,3 +43,10 @@ test('Difference between 2 nested JSON/YAML files in a plain format', () => {
   const result = readFile('expectedPlainFile.txt');
   expect(genDiff(filepath1, filepath2, 'plain')).toEqual(result);
 });
+
+test('Difference between 2 nested JSON/YAML files in a json format', () => {
+  const filepath1 = getFixturePath('file1.json');
+  const filepath2 = getFixturePath('file2.yml');
+  const result = readFile('expectedJsonFile.txt');
+  expect(genDiff(filepath1, filepath2, 'json')).toEqual(result);
+});
