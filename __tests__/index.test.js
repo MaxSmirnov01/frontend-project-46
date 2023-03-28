@@ -9,44 +9,18 @@ const __dirname = path.dirname(__filename);
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 
-test('Difference between 2 flat JSON', () => {
-  const filepath1 = getFixturePath('file1.json');
-  const filepath2 = getFixturePath('file2.json');
-  const result = readFile('expectedStylishFile.txt');
-  expect(genDiff(filepath1, filepath2)).toEqual(result);
-});
+const stylishResult = readFile('expectedStylishFile.txt');
+const plainResult = readFile('expectedPlainFile.txt');
+const jsonResult = readFile('expectedJsonFile.txt');
 
-test('Difference between 2 flat yaml/yml', () => {
-  const filepath1 = getFixturePath('file1.yaml');
-  const filepath2 = getFixturePath('file2.yml');
-  const result = readFile('expectedStylishFile.txt');
-  expect(genDiff(filepath1, filepath2)).toEqual(result);
-});
+const extensions = ['json', 'yml', 'yaml'];
 
-test('Difference between 2 nested JSON/YAML files in a stylish format', () => {
-  const filepath1 = getFixturePath('file1.json');
-  const filepath2 = getFixturePath('file2.yml');
-  const result = readFile('expectedStylishFile.txt');
-  expect(genDiff(filepath1, filepath2)).toEqual(result);
-});
+test.each(extensions)('Difference between 2 flat JSON', (extension) => {
+  const fileBefore = getFixturePath(`file1.${extension}`);
+  const fileAfter = getFixturePath(`file2.${extension}`);
 
-test('Difference between 2 nested JSON files in a plain format', () => {
-  const filepath1 = getFixturePath('file1.json');
-  const filepath2 = getFixturePath('file2.json');
-  const result = readFile('expectedPlainFile.txt');
-  expect(genDiff(filepath1, filepath2, 'plain')).toEqual(result);
-});
-
-test('Difference between 2 nested JSON/YAML files in a plain format', () => {
-  const filepath1 = getFixturePath('file1.json');
-  const filepath2 = getFixturePath('file2.yml');
-  const result = readFile('expectedPlainFile.txt');
-  expect(genDiff(filepath1, filepath2, 'plain')).toEqual(result);
-});
-
-test('Difference between 2 nested JSON/YAML files in a json format', () => {
-  const filepath1 = getFixturePath('file1.json');
-  const filepath2 = getFixturePath('file2.yml');
-  const result = readFile('expectedJsonFile.txt');
-  expect(genDiff(filepath1, filepath2, 'json')).toEqual(result);
+  expect(genDiff(fileBefore, fileAfter)).toEqual(stylishResult);
+  expect(genDiff(fileBefore, fileAfter, 'stylish')).toEqual(stylishResult);
+  expect(genDiff(fileBefore, fileAfter, 'plain')).toEqual(plainResult);
+  expect(genDiff(fileBefore, fileAfter, 'json')).toEqual(jsonResult);
 });
