@@ -15,7 +15,7 @@ const jsonResult = readFile('expectedJsonFile.txt');
 
 const extensions = ['json', 'yml', 'yaml'];
 
-test.each(extensions)('Difference between 2 flat JSON', (extension) => {
+test.each(extensions)('Difference between 2 files', (extension) => {
   const fileBefore = getFixturePath(`file1.${extension}`);
   const fileAfter = getFixturePath(`file2.${extension}`);
 
