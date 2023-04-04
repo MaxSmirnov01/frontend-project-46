@@ -9,15 +9,15 @@ Difference generator - a program which determines differences between two data s
 #### Installation:
 
 ```
-1. git clone
+git clone
 ```
 
 ```
-2. make install
+make install
 ```
 
 ```
-3. make link
+make link
 ```
 
 **1. Difference between 2 flat JSON:**
